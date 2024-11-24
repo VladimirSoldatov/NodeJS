@@ -1,0 +1,41 @@
+<h1>Список покупок</h1>
+ <div>
+      <p>
+          <label>Товар</label><br/>
+          <input [(ngModel)]="text" />
+      </p>
+      <p>
+          <label>Цена</label><br/>
+          <input [(ngModel)]="price" type="number"/>
+      </p>
+      <button (click)="addItem(text, price)" (click) = "changeNameEvent()">Добавить</button>
+      <div>
+
+ <table>
+ <thead>
+     <tr>
+         <th>Предмет</th>
+         <th>Цена</th>
+         <th>Куплено</th>
+     </tr>
+ </thead>
+ <tbody>
+ @for (item of items; track item.purchase) {
+
+     <tr>
+         <td>{{item.purchase}} </td>
+         <td>{{item.price}}</td>
+         <td><input type="checkbox" [(ngModel)]="item.done" (change)="clickCheck($event, item)"/></td>
+         <td><button (click)="dellItem(item)">Удалить</button>
+ 
+     </tr>
+  
+ }
+ <tr><td>Итого</td><td>{{total_price}} </td>
+ </tbody>
+</table>
+<app-newitem (onChanged) ="onChanged($event)" [userName]="name" [userAge]="age"></app-newitem>
+                <input type="number" [(ngModel)]="age" />
+
+<h2>Количество кликов: {{clicks}}</h2>
+
